@@ -1,0 +1,27 @@
+{
+    "name": "melvinachterhuis/content-search-shopware6-plugin",
+    "description": "Extend the Shopware 6 search with categories, manufacturers and landing pages",
+    "version": "0.0.1",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Melvin Achterhuis"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Melv\\ContentSearch\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Melv\\ContentSearch\\MelvContentSearch",
+        "label": {
+            "de-DE": "Content search",
+            "en-GB": "Content search"
+        }
+    }
+}

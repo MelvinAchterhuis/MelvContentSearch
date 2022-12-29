@@ -1,0 +1,40 @@
+{% block melv_content_search_manufacturer_results %}
+    {% set manufacturers = page.searchResult.extensions.manufacturers %}
+    {% for manufacturer in manufacturers %}
+        <li class="search-suggest-product js-result">
+            <a href="{{ manufacturer.link }}"
+               title="{{ manufacturer.translated.name }}"
+               class="search-suggest-product-link">
+                <div class="row align-items-center {{ gridNoGuttersClass }}">
+                    {% block layout_search_suggest_result_image %}
+                        <div class="col-auto search-suggest-product-image-container">
+                            {% if manufacturer.media.url %}
+                                {% sw_thumbnails 'search-suggest-product-image-thumbnails' with {
+                                    media: manufacturer.media,
+                                    sizes: {
+                                        'default': '100px'
+                                    },
+                                    attributes: {
+                                        'class': 'search-suggest-product-image',
+                                        'alt': (manufacturer.media.translated.alt ?: ''),
+                                        'title': (manufacturer.media.translated.title ?: '')
+                                    }
+                                } %}
+                            {% else %}
+                                {% sw_icon 'placeholder' style {
+                                    'size': 'lg'
+                                } %}
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+
+                    {% block layout_search_suggest_result_name %}
+                        <div class="col search-suggest-product-name">
+                            {{ manufacturer.translated.name }}
+                        </div>
+                    {% endblock %}
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% sw_extends '@Storefront/storefront/layout/header/search-suggest.html.twig' %}
+
+{% block layout_search_suggest_container %}
+    {% set searchManufacturers = config('MelvContentSearch.config.searchManufacturers') %}
+    {% set searchCategories = config('MelvContentSearch.config.searchCategories') %}
+    {% set searchLandingPages = config('MelvContentSearch.config.searchLandingPages') %}
+
+    {# If everything is disabled we should fall back to the default search suggest with products only #}
+    {% if not searchManufacturers and not searchCategories and not searchLandingPages %}
+        {{ parent() }}
+    {% else %}
+        {% block layout_search_suggest_container_wrapper %}
+            <div class="search-suggest-container melv">
+                {% block layout_search_suggest_container_tabs %}
+                    {% sw_include '@MelvContentSearch/plugin/tabs.html.twig' %}
+                {% endblock %}
+
+                {% block layout_search_suggest_container_tabs_content %}
+                    {% sw_include '@MelvContentSearch/plugin/tabs-content.html.twig' %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

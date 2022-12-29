@@ -1,0 +1,30 @@
+{% block melv_content_search_tabs %}
+    <ul class="nav nav-tabs">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="products-tab" data-toggle="tab" data-target="#products" type="button" role="tab" aria-controls="products" aria-selected="true">
+                Products <span class="badge badge-primary">{{ page.searchResult|length }}</span>
+            </button>
+        </li>
+        {% if searchManufacturers %}
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="manufacturers-tab" data-toggle="tab" data-target="#manufacturers" type="button" role="tab" aria-controls="manufacturers" aria-selected="false">
+                    Manufacturers <span class="badge badge-primary">{{ page.searchResult.extensions.manufacturers|length }}</span>
+                </button>
+            </li>
+        {% endif %}
+        {% if searchCategories %}
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="categories-tab" data-toggle="tab" data-target="#categories" type="button" role="tab" aria-controls="categories" aria-selected="false">
+                    Categories <span class="badge badge-primary">{{ page.searchResult.extensions.categories|length }}</span>
+                </button>
+            </li>
+        {% endif %}
+        {% if searchLandingPages %}
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="content-tab" data-toggle="tab" data-target="#content" type="button" role="tab" aria-controls="content" aria-selected="false">
+                    Content <span class="badge badge-primary">{{ page.searchResult.extensions.landingPages|length }}</span>
+                </button>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}

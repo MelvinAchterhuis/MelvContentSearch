@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Search config</title>
+
+        <input-field type="bool">
+            <name>searchManufacturers</name>
+            <label>Search in manufacturers</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>searchCategories</name>
+            <label>Search in categories</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>searchLandingPages</name>
+            <label>Search in landing pages</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+</config>

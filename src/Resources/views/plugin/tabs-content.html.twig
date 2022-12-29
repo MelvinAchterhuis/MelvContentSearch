@@ -1,0 +1,54 @@
+{% block melv_content_search_tabs_content %}
+    <div class="tab-content">
+        {% block layout_search_suggest_container_tabs_content_products %}
+            <div class="tab-pane fade show active" id="products" role="tabpanel" aria-labelledby="products-tab">
+                <ul class="list-unstyled mt-3">
+                    {# Default product search suggest #}
+                    {{ block('layout_search_suggest_results', '@Storefront/storefront/layout/header/search-suggest.html.twig') }}
+                    {% if page.searchResult.total == 0 %}
+                        {{ block('layout_search_suggest_no_result') }}
+                    {% endif %}
+                </ul>
+            </div>
+        {% endblock %}
+        {% block layout_search_suggest_container_tabs_content_manufacturers %}
+            {% if searchManufacturers %}
+                <div class="tab-pane fade" id="manufacturers" role="tabpanel" aria-labelledby="manufacturers-tab">
+                    <ul class="list-unstyled mt-3">
+                        {% if page.searchResult.extensions.manufacturers|length == 0 %}
+                            {{ block('layout_search_suggest_no_result', '@Storefront/storefront/layout/header/search-suggest.html.twig') }}
+                        {% else %}
+                            {% sw_include '@MelvContentSearch/plugin/manufacturer-results.html.twig' %}
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block layout_search_suggest_container_tabs_content_categories %}
+            {% if searchCategories %}
+                <div class="tab-pane fade" id="categories" role="tabpanel" aria-labelledby="categories-tab">
+                    <ul class="list-unstyled mt-3">
+                        {% if page.searchResult.extensions.categories|length == 0 %}
+                            {{ block('layout_search_suggest_no_result', '@Storefront/storefront/layout/header/search-suggest.html.twig') }}
+                        {% else %}
+                            {% sw_include '@MelvContentSearch/plugin/categories-results.html.twig' %}
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endblock %}
+        {% block layout_search_suggest_container_tabs_content_content %}
+            {% if searchLandingPages %}
+                <div class="tab-pane fade" id="content" role="tabpanel" aria-labelledby="content-tab">
+                    <ul class="list-unstyled mt-3">
+                        {% if page.searchResult.extensions.landingPages|length == 0 %}
+                            {{ block('layout_search_suggest_no_result', '@Storefront/storefront/layout/header/search-suggest.html.twig') }}
+                        {% else %}
+                            {% sw_include '@MelvContentSearch/plugin/content-results.html.twig' %}
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
