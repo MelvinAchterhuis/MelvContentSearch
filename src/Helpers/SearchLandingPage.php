@@ -16,6 +16,7 @@ class SearchLandingPage
 
     public function getResults(string $query, $salesChannelContext): EntitySearchResult
     {
+        //TODO: Only fetch landing pages connected to the current sales channel
         $criteria = new Criteria();
         $criteria->addFilter(new MultiFilter(MultiFilter::CONNECTION_OR, [
             new ContainsFilter('name', $query),

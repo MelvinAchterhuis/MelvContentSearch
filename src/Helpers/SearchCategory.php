@@ -16,6 +16,7 @@ class SearchCategory
 
     public function getResults(string $query, $salesChannelContext): EntitySearchResult
     {
+        //TODO: Only fetch categories from category tree connected to the current sales channel
         $criteria = new Criteria();
         $criteria->addAssociation('media');
         $criteria->addFilter(new MultiFilter(MultiFilter::CONNECTION_OR, [

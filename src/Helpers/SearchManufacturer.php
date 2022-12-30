@@ -16,6 +16,7 @@ class SearchManufacturer
 
     public function getResults(string $query, $salesChannelContext): EntitySearchResult
     {
+        //TODO: Not all manufacturers are necessarily tied to the current sales channel, however by default it is not possible to tie a manufacturer to a sales channel
         $criteria = new Criteria();
         $criteria->addAssociation('media');
         $criteria->addFilter(new MultiFilter(MultiFilter::CONNECTION_OR, [
