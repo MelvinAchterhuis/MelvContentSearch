@@ -6,7 +6,7 @@
                     {# Default product search suggest #}
                     {{ block('layout_search_suggest_results', '@Storefront/storefront/layout/header/search-suggest.html.twig') }}
                     {% if page.searchResult.total == 0 %}
-                        {{ block('layout_search_suggest_no_result') }}
+                        {{ block('layout_search_suggest_no_result', '@Storefront/storefront/layout/header/search-suggest.html.twig') }}
                     {% endif %}
                 </ul>
             </div>
